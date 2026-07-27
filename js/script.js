@@ -128,3 +128,31 @@ if (langSwitch) {
     }, delay);
   });
 }
+
+// ==============================
+// Кнопка "наверх": показывается после прокрутки вниз,
+// по клику плавно скроллит к началу страницы.
+// ==============================
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+if (scrollTopBtn) {
+  let scrollTicking = false;
+
+  const updateScrollTopVisibility = () => {
+    scrollTopBtn.classList.toggle('is-visible', window.scrollY > 400);
+    scrollTicking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(updateScrollTopVisibility);
+      scrollTicking = true;
+    }
+  });
+
+  updateScrollTopVisibility(); // на случай, если страница открыта не с самого верха
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  });
+}

@@ -1208,6 +1208,64 @@ p {
 }
 
 /* ============================================
+   25. КНОПКА "НАВЕРХ"
+   Плавающая круглая кнопка — появляется после прокрутки
+   вниз (JS переключает .is-visible), скроллит к началу.
+   ============================================ */
+.scroll-top {
+  position: fixed;
+  right: calc(20px + env(safe-area-inset-right));
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-heading);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  translate: 0 12px;
+  pointer-events: none; /* пока скрыта — не перехватывает клики под собой */
+  transition: opacity 0.3s var(--ease-standard), translate 0.3s var(--ease-standard),
+    border-color 0.2s var(--ease-standard), background-color 0.2s var(--ease-standard);
+}
+
+.scroll-top.is-visible {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
+}
+
+.scroll-top:hover {
+  border-color: var(--color-green);
+  background: var(--color-green-hover);
+}
+
+.scroll-top:active {
+  transform: scale(0.92);
+}
+
+.scroll-top:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+}
+
+.scroll-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-top {
+    transition: opacity 0.15s linear;
+  }
+}
+
+/* ============================================
    14. АДАПТИВНОСТЬ (мобильные экраны)
    ============================================ */
 @media (max-width: 768px) {
