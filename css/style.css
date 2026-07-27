@@ -284,11 +284,36 @@ p {
   flex-shrink: 0;
 }
 
+/* Три палочки морфируют в крестик при открытии меню.
+   7px = высота палочки (2px) + зазор (5px) — именно на столько
+   нужно сдвинуть верхнюю/нижнюю палочку, чтобы они точно легли
+   поверх средней и образовали ровный крестик. */
 .burger span {
   display: block;
   width: 24px;
   height: 2px;
   background: var(--color-heading);
+  transform-origin: center;
+  transition: transform 0.35s var(--ease-spring), opacity 0.2s var(--ease-standard);
+}
+
+.burger.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger.is-active span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.burger.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .burger span {
+    transition: opacity 0.15s linear;
+  }
 }
 
 /* ============================================
@@ -1100,17 +1125,45 @@ p {
     border-bottom: 1px solid var(--color-border);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease;
+    transition: max-height 0.35s var(--ease-emphasized);
   }
 
   .nav.nav--open {
-    max-height: 320px;
+    max-height: 420px; /* с запасом на 6 пунктов + перенос длинного текста */
   }
 
   .nav__list {
     flex-direction: column;
     gap: 0;
     padding: 8px 24px 20px;
+  }
+
+  /* Пункты меню проявляются по очереди, а не все разом —
+     тот же язык анимации, что и у карточек при прокрутке (.reveal) */
+  .nav__list li {
+    opacity: 0;
+    translate: 0 -8px;
+    transition: opacity 0.3s var(--ease-standard), translate 0.3s var(--ease-standard);
+  }
+
+  .nav.nav--open .nav__list li {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .nav.nav--open .nav__list li:nth-child(1) { transition-delay: 0.05s; }
+  .nav.nav--open .nav__list li:nth-child(2) { transition-delay: 0.1s; }
+  .nav.nav--open .nav__list li:nth-child(3) { transition-delay: 0.15s; }
+  .nav.nav--open .nav__list li:nth-child(4) { transition-delay: 0.2s; }
+  .nav.nav--open .nav__list li:nth-child(5) { transition-delay: 0.25s; }
+  .nav.nav--open .nav__list li:nth-child(6) { transition-delay: 0.3s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav__list li {
+      opacity: 1;
+      translate: 0 0;
+      transition: none;
+    }
   }
 
   .nav__list li {

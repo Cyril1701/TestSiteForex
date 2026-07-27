@@ -43,8 +43,10 @@ const burgerBtn = document.getElementById('burgerBtn');
 const nav = document.querySelector('.nav');
 
 burgerBtn.addEventListener('click', () => {
-  nav.classList.toggle('nav--open');
-  burgerBtn.classList.toggle('is-active');
+  const isOpen = nav.classList.toggle('nav--open');
+  burgerBtn.classList.toggle('is-active', isOpen);
+  burgerBtn.setAttribute('aria-expanded', String(isOpen));
+  burgerBtn.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
 });
 
 // ==============================
