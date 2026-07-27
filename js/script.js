@@ -46,3 +46,61 @@ burgerBtn.addEventListener('click', () => {
   nav.classList.toggle('nav--open');
   burgerBtn.classList.toggle('is-active');
 });
+
+// ==============================
+// Плавное появление карточек при прокрутке.
+// Класс .reveal вешаем прямо здесь, через JS — так не
+// пришлось вручную дописывать его в разметку каждой
+// страницы: достаточно того, что элемент подходит под
+// один из селекторов ниже.
+// ==============================
+const revealSelector = [
+  '.course-card', '.guide-card', '.problem-card',
+  '.stat-card', '.review-card', '.pricing-card', '.accordion-item',
+].join(', ');
+
+const revealEls = document.querySelectorAll(revealSelector);
+
+if (revealEls.length && 'IntersectionObserver' in window) {
+  revealEls.forEach((el) => el.classList.add('reveal'));
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target); // однократно, дальше не следим
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach((el) => revealObserver.observe(el));
+} else {
+  // на случай отсутствия поддержки IntersectionObserver — не прячем контент
+  revealEls.forEach((el) => el.classList.add('is-visible'));
+}
+
+// ==============================
+// Ripple-эффект на кнопках (.btn) — один обработчик
+// на весь документ вместо навешивания на каждую кнопку
+// ==============================
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReducedMotion) {
+  document.addEventListener('click', (event) => {
+    const btn = event.target.closest('.btn');
+    if (!btn) return;
+
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+
+    const ripple = document.createElement('span');
+    ripple.className = 'btn__ripple';
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+
+    btn.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+}

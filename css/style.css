@@ -57,6 +57,12 @@ button {
   /* отступы секций */
   --section-padding: 96px 0;
   --container-width: 1140px;
+
+  /* кривые движения в духе Material/Pixel: не линейные,
+     а с лёгким "перехлёстом" на выходе — ощущаются более живыми */
+  --ease-standard:   cubic-bezier(0.2, 0, 0, 1);     /* для наведения/ховера */
+  --ease-emphasized: cubic-bezier(0.3, 0, 0.2, 1);   /* для появления блоков */
+  --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1); /* для нажатия кнопки */
 }
 
 /* Светлая тема — те же имена переменных, другие значения.
@@ -142,15 +148,48 @@ p {
 /* кнопки */
 .btn {
   display: inline-block;
+  position: relative; /* точка отсчёта для ripple-круга */
+  overflow: hidden;    /* обрезает ripple по границе кнопки */
   padding: 14px 28px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  transition: background 0.2s var(--ease-standard), color 0.2s var(--ease-standard),
+    transform 0.15s var(--ease-standard);
 }
 
 .btn:hover {
   transform: translateY(-1px);
+}
+
+/* лёгкое "приседание" при нажатии — тактильный отклик, как на Pixel */
+.btn:active {
+  transform: scale(0.96);
+  transition: transform 0.15s var(--ease-spring);
+}
+
+/* сам ripple-круг: создаётся и удаляется через JS (script.js) */
+.btn__ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.28;
+  transform: scale(0);
+  animation: ripple-expand 0.6s var(--ease-standard);
+  pointer-events: none;
+}
+
+@keyframes ripple-expand {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn__ripple {
+    display: none; /* уважаем настройку "уменьшить анимации" в ОС */
+  }
 }
 
 .btn--primary {
@@ -954,6 +993,71 @@ p {
 
 .final-cta p {
   margin: 16px 0 32px;
+}
+
+/* ============================================
+   23. ПОЯВЛЕНИЕ БЛОКОВ ПРИ ПРОКРУТКЕ
+   Класс .reveal добавляется автоматически через script.js —
+   в HTML ничего не нужно размечать вручную.
+
+   Важный нюанс: анимируем через отдельное CSS-свойство
+   "translate", а не через "transform" — карточки вроде
+   .course-card уже используют transform для эффекта при
+   наведении, и если бы обе анимации спорили за одно и то
+   же свойство transition, победила бы только одна из них.
+   translate — независимое свойство, конфликта не будет.
+   ============================================ */
+.reveal {
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity 0.6s var(--ease-emphasized), translate 0.6s var(--ease-emphasized);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
+
+/* ============================================
+   24. ВХОД HERO-БЛОКА И ПЕРЕХОД МЕЖДУ СТРАНИЦАМИ
+   ============================================ */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.hero__inner,
+.course-hero__inner {
+  animation: fade-in-up 0.7s var(--ease-emphasized) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__inner,
+  .course-hero__inner {
+    animation: none;
+  }
+}
+
+/* Мягкий кросс-фейд при переходе между страницами.
+   Работает "из коробки" в Chrome/Edge (View Transitions API),
+   в Safari/iOS пока просто игнорируется без ошибок — сайт
+   от этого не ломается, эффекта только не будет видно. */
+@view-transition {
+  navigation: auto;
 }
 
 /* ============================================
