@@ -448,9 +448,12 @@ p {
 
 /* класс is-uk переключает бегунок вправо — используется и как
    постоянное состояние на украинских страницах, и как временное
-   при клике (JS добавляет его на долю секунды перед переходом) */
+   при клике (JS добавляет его на долю секунды перед переходом).
+   32px было ошибкой: путь бегунка = внутренняя ширина трека минус
+   диаметр бегунка, а внутренняя ширина считается за вычетом НЕ
+   только padding (3px×2), но и border (1px×2) — итого 30px. */
 .lang-switch.is-uk .lang-switch__thumb {
-  transform: translateX(32px);
+  transform: translateX(30px);
 }
 
 .lang-switch.is-uk .lang-switch__option--ru {
@@ -1233,7 +1236,7 @@ p {
   }
 
   .lang-switch.is-uk .lang-switch__thumb {
-    transform: translateX(24px);
+    transform: translateX(22px);
   }
 
   .lang-switch__option {
