@@ -47,7 +47,8 @@ button {
 
   --color-green:      #22c55e; /* основной акцент */
   --color-green-dark: #16a34a; /* hover-состояние */
-  --color-green-soft: rgba(34, 197, 94, 0.12); /* подложка под акцент */
+  --color-green-soft: rgba(34, 197, 94, 0.12); /* мягкая подложка под бейджи/плашки */
+  --color-green-hover: rgba(34, 197, 94, 0.28); /* заметная подсветка при наведении на иконки-кнопки */
 
   --color-header-bg: rgba(13, 13, 13, 0.9); /* полупрозрачная шапка при скролле */
 
@@ -80,6 +81,7 @@ button {
   --color-green:      #15803d; /* чуть темнее — иначе на белом фоне мало контраста */
   --color-green-dark: #166534;
   --color-green-soft: rgba(21, 128, 61, 0.10);
+  --color-green-hover: rgba(21, 128, 61, 0.20);
 
   --color-header-bg: rgba(255, 255, 255, 0.85);
 }
@@ -289,7 +291,7 @@ p {
 /* та же круглая зелёная подсветка при наведении, что и у
    переключателя темы рядом — единая логика hover по сайту */
 .burger:hover {
-  background: var(--color-green-soft);
+  background: var(--color-green-hover);
 }
 
 .burger:focus-visible,
@@ -349,6 +351,7 @@ p {
 
 .theme-toggle:hover {
   border-color: var(--color-green);
+  background: var(--color-green-hover);
 }
 
 /* Обе иконки лежат друг на друге в одной точке — переключение
