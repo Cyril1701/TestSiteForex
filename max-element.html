@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Maximum Element — курс по системному трейдингу | MAXIMUM TRADING</title>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">MAXIMUM<span>TRADING</span></a>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="index.html#courses">Курсы</a></li>
+          <li><a href="index.html#guides">PDF-гайды</a></li>
+          <li><a href="index.html#about">О Максиме</a></li>
+          <li><a href="index.html#reviews">Отзывы</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <a href="#" class="btn btn--primary btn--small">Написать в Telegram</a>
+
+      <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- COURSE HERO -->
+    <section class="course-hero">
+      <div class="container course-hero__inner">
+        <a href="index.html" class="course-hero__back">← Все курсы</a>
+        <span class="badge">Профессиональный уровень · 6 месяцев</span>
+        <h1>Построй системную торговую стратегию и торгуй по чёткому плану</h1>
+        <p class="course-hero__subtitle">
+          [Плейсхолдер] Курс для тех, кто уже знаком с рынком, но пока не может выйти
+          на стабильный результат из-за хаоса в решениях. Разбираем торговую систему,
+          риск-менеджмент и психологию — и собираем всё в одну рабочую систему исполнения.
+        </p>
+        <div class="course-hero__actions">
+          <a href="#pricing" class="btn btn--primary">Тарифы и запись</a>
+          <a href="#curriculum" class="btn btn--outline">Смотреть программу</a>
+        </div>
+        <ul class="course-hero__meta">
+          <li><strong>6 месяцев</strong><span>формат обучения</span></li>
+          <li><strong>Онлайн</strong><span>с разбором сделок</span></li>
+          <li><strong>Forex</strong><span>рынок</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RISK DISCLAIMER (специфично для этого курса) -->
+    <section class="risk-strip">
+      <div class="container">
+        <p>
+          ⚠ [Плейсхолдер] Цифры доходности на этой странице — ориентир по статистике
+          учеников курса, а не гарантия результата. Торговля на Forex и проп-счетах
+          всегда связана с риском потери капитала.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROBLEMS -->
+    <section class="problems">
+      <div class="container">
+        <h2 class="section-title">Что обычно мешает трейдеру выйти на стабильность</h2>
+        <p class="section-subtitle">[Плейсхолдер] Короткое пояснение, что это частые причины слитых депозитов.</p>
+
+        <div class="problems__grid">
+          <article class="problem-card">
+            <span class="problem-card__num">01</span>
+            <h3>Торговая система</h3>
+            <p>[Плейсхолдер] Изучено много систем, но ни одна не даёт стабильного результата.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__num">02</span>
+            <h3>Торговые планы</h3>
+            <p>[Плейсхолдер] План составлен, но в моменте сделки открываются не по нему.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__num">03</span>
+            <h3>Дневник трейдера</h3>
+            <p>[Плейсхолдер] Дневник — лучший наставник, но вести его регулярно тяжело.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__num">04</span>
+            <h3>Риск-менеджмент</h3>
+            <p>[Плейсхолдер] Про стоп-лосс все знают, но риск на сделку не соблюдается.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__num">05</span>
+            <h3>Психология торговли</h3>
+            <p>[Плейсхолдер] Мышление трейдера ломается после серии убыточных сделок.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story">
+      <div class="container story__inner">
+        <div class="story__photo" aria-hidden="true"></div>
+        <div class="story__text">
+          <h2 class="section-title">Как появился Maximum Element</h2>
+          <p>[Плейсхолдер] Здесь будет честная история создания системы: с какими проблемами
+          сталкивался сам автор, что не получалось, и как появилась текущая методика.</p>
+          <p>[Плейсхолдер] Второй абзац — про то, чем система отличается от типичных
+          курсов по трейдингу и почему в основе лежит именно система исполнения, а не
+          только точки входа.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REALISTIC EXPECTATIONS -->
+    <section class="stats">
+      <div class="container">
+        <h2 class="section-title">Реалистичные ожидания по доходности</h2>
+        <p class="section-subtitle">[Плейсхолдер] Мы намеренно не обещаем миллионы за месяц — вот честные цифры по нашей статистике.</p>
+
+        <div class="stats__grid">
+          <div class="stat-card">
+            <span class="stat-card__value">10–20%</span>
+            <p>средняя доходность прибыльных учеников в месяц</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__value">3–6</span>
+            <p>месяцев в среднем до первого стабильного результата</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__value">0%</span>
+            <p>гарантии — рынок есть рынок, и это нормально</p>
+          </div>
+        </div>
+
+        <p class="stats__disclaimer">
+          [Плейсхолдер] Полный текст дисклеймера о рисках торговли и о том, что прошлые
+          результаты учеников не гарантируют будущих, разместим здесь.
+        </p>
+      </div>
+    </section>
+
+    <!-- CURRICULUM -->
+    <section id="curriculum" class="curriculum">
+      <div class="container">
+        <h2 class="section-title">Программа курса</h2>
+        <p class="section-subtitle">6 модулей. Каждый разбираем на живых сделках и практике.</p>
+
+        <div class="accordion-group">
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 1 — С нуля до системной торговли
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Плейсхолдер] Основа торговой системы Maximum Element</li>
+                <li>[Плейсхолдер] Разбор графика и определение направления рынка</li>
+                <li>[Плейсхолдер] Первые сделки под контролем куратора</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 2 — Система исполнения
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Плейсхолдер] Алгоритм A-B-C-D-E</li>
+                <li>[Плейсхолдер] Как не отклоняться от плана в моменте сделки</li>
+                <li>[Плейсхолдер] Ведение дневника трейдера</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 3 — Риск- и мани-менеджмент
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Плейсхолдер] Расчёт риска на сделку</li>
+                <li>[Плейсхолдер] Соотношение прибыль/риск от 2:1 до 5:1</li>
+                <li>[Плейсхолдер] Правила выхода из просадки</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 4 — Психология трейдера
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Плейсхолдер] Работа с эмоциями после убыточной серии</li>
+                <li>[Плейсхолдер] Дисциплина исполнения торгового плана</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 5 — Проп-трейдинг
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Плейсхолдер] Как проходить испытания проп-компаний</li>
+                <li>[Плейсхолдер] Выбор проп-компании и условий</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 6 — Масштабирование результата
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Плейсхолдер] План работы с проп-счетами 6–12 месяцев</li>
+                <li>[Плейсхолдер] Вывод прибыли и дальнейшее развитие</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <h2 class="section-title">Тарифы</h2>
+        <p class="section-subtitle">Никакой корзины и «доставки» — выберите формат и напишите в Telegram, мы поможем с оплатой и доступом.</p>
+
+        <div class="pricing__grid">
+          <article class="pricing-card">
+            <h3>Базовый</h3>
+            <p class="pricing-card__price">[Плейсхолдер цены]</p>
+            <ul class="pricing-card__features">
+              <li>Доступ к записям всех модулей</li>
+              <li>Материалы и чек-листы</li>
+              <li>Доступ к закрытому чату</li>
+            </ul>
+            <a href="#" class="btn btn--outline">Записаться</a>
+          </article>
+
+          <article class="pricing-card pricing-card--featured">
+            <span class="pricing-card__badge">Популярный выбор</span>
+            <h3>Стандарт</h3>
+            <p class="pricing-card__price">[Плейсхолдер цены]</p>
+            <ul class="pricing-card__features">
+              <li>Всё из тарифа «Базовый»</li>
+              <li>Еженедельные разборы сделок</li>
+              <li>Проверка дневника трейдера куратором</li>
+            </ul>
+            <a href="#" class="btn btn--primary">Записаться</a>
+          </article>
+
+          <article class="pricing-card">
+            <h3>VIP</h3>
+            <p class="pricing-card__price">[Плейсхолдер цены]</p>
+            <ul class="pricing-card__features">
+              <li>Всё из тарифа «Стандарт»</li>
+              <li>Личные созвоны с куратором</li>
+              <li>Помощь в прохождении проп-испытания</li>
+            </ul>
+            <a href="#" class="btn btn--outline">Записаться</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews">
+      <div class="container">
+        <h2 class="section-title">Отзывы учеников курса</h2>
+        <div class="reviews__grid">
+          <div class="review-card">
+            <p class="review-card__text">[Плейсхолдер отзыва №1]</p>
+            <p class="review-card__author">Имя ученика</p>
+          </div>
+          <div class="review-card">
+            <p class="review-card__text">[Плейсхолдер отзыва №2]</p>
+            <p class="review-card__author">Имя ученика</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="container">
+        <h2 class="section-title">Частые вопросы о курсе</h2>
+        <div class="accordion-group">
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Подойдёт ли курс новичку без опыта?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Плейсхолдер ответа]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Сколько нужно депозита для старта?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Плейсхолдер ответа]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Есть ли гарантия возврата денег?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Плейсхолдер ответа]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Что если не выйдет на прибыль после курса?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Плейсхолдер ответа — честно, без обещаний гарантированной прибыли]</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <div class="container final-cta__inner">
+        <h2>Готовы построить свою торговую систему?</h2>
+        <p>[Плейсхолдер] Короткий призыв записаться, без искусственных дедлайнов и таймеров.</p>
+        <a href="#pricing" class="btn btn--primary">Выбрать тариф</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contacts" class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <a href="index.html" class="logo logo--footer">MAXIMUM<span>TRADING</span></a>
+        <p>[Плейсхолдер] Информационный сайт проекта. Не является индивидуальной инвестиционной рекомендацией.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Контакты</h4>
+        <p>Telegram: <a href="#">[плейсхолдер]</a></p>
+        <p>Email: <a href="#">[плейсхолдер]</a></p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Документы</h4>
+        <p><a href="#">Политика конфиденциальности</a></p>
+        <p><a href="#">Политика возврата</a></p>
+        <p><a href="#">Отказ от ответственности</a></p>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© 2026 MAXIMUM TRADING. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1072 @@
+/* ============================================
+   1. RESET — убираем стандартные отступы браузера,
+   чтобы все элементы выглядели одинаково в разных браузерах
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img, table {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* ============================================
+   2. ПЕРЕМЕННЫЕ ТЕМЫ — вся палитра и шрифты сайта
+   собраны в одном месте. Поменяете значение здесь —
+   изменится весь сайт целиком.
+   ============================================ */
+/* Тёмная тема — значения по умолчанию, применяются пока
+   на <html> не появится атрибут data-theme="light" */
+:root {
+  /* цвета */
+  --color-bg:      #0d0d0d;  /* фон секций */
+  --color-surface: #171717;  /* карточки, альтернативные секции */
+  --color-text:    #f2f2f2;  /* обычный текст */
+  --color-heading: #ffffff;  /* самый контрастный текст (заголовки, hover-состояния) */
+  --color-muted:   #9a9a9a;  /* второстепенный текст */
+  --color-border:  #2a2a2a;  /* тонкие границы */
+
+  --color-green:      #22c55e; /* основной акцент */
+  --color-green-dark: #16a34a; /* hover-состояние */
+  --color-green-soft: rgba(34, 197, 94, 0.12); /* подложка под акцент */
+
+  --color-header-bg: rgba(13, 13, 13, 0.9); /* полупрозрачная шапка при скролле */
+
+  /* типографика */
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* отступы секций */
+  --section-padding: 96px 0;
+  --container-width: 1140px;
+}
+
+/* Светлая тема — те же имена переменных, другие значения.
+   Всё остальные 500+ строк CSS ниже ни разу не меняются:
+   они просто ссылаются на var(--color-...), а браузер
+   сам подставит нужный набор в зависимости от data-theme. */
+:root[data-theme="light"] {
+  --color-bg:      #ffffff;
+  --color-surface: #f2f3f5;
+  --color-text:    #2b2b2e;
+  --color-heading: #0d0d0d;
+  --color-muted:   #6b6b70;
+  --color-border:  #e3e4e8;
+
+  --color-green:      #15803d; /* чуть темнее — иначе на белом фоне мало контраста */
+  --color-green-dark: #166534;
+  --color-green-soft: rgba(21, 128, 61, 0.10);
+
+  --color-header-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* плавный переход при переключении темы */
+body, .site-header, .course-card, .comparison__table-wrap,
+.review-card, .accordion-item, .site-footer, .about__photo {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* ============================================
+   3. БАЗОВАЯ ТИПОГРАФИКА
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 16px;
+  /* отступы под "чёлку"/Dynamic Island и закруглённые края экрана
+     в горизонтальной ориентации на iPhone (работает благодаря
+     viewport-fit=cover в <meta name="viewport">) */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); }
+h3 { font-size: 1.25rem; }
+
+p {
+  color: var(--color-muted);
+}
+
+/* ============================================
+   4. ОБЩИЕ УТИЛИТЫ — переиспользуемые на всех страницах
+   ============================================ */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-title {
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+
+/* кнопки */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background: var(--color-green);
+  color: #06210f;
+}
+
+.btn--primary:hover {
+  background: var(--color-green-dark);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-green);
+  border: 1px solid var(--color-green);
+}
+
+.btn--outline:hover {
+  background: var(--color-green-soft);
+}
+
+.btn--small {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   5. HEADER / NAV
+   ============================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-header-bg);
+  -webkit-backdrop-filter: blur(8px); /* без префикса Safari/iOS игнорирует блюр */
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  /* сдвигаем контент шапки ниже Dynamic Island/чёлки на iPhone */
+  padding-top: env(safe-area-inset-top);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--color-green);
+}
+
+.nav__list {
+  display: flex;
+  gap: 28px;
+}
+
+.nav__list a {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  transition: color 0.2s ease;
+}
+
+.nav__list a:hover {
+  color: var(--color-heading);
+}
+
+.header__inner > .btn {
+  flex-shrink: 0;
+}
+
+/* бургер-кнопка скрыта на десктопе, появится в адаптиве.
+   Сам значок — 24px, но кликабельная область кнопки — 44x44px
+   (минимальный размер тач-таргета по рекомендациям Apple HIG) */
+.burger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-heading);
+}
+
+/* ============================================
+   ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ
+   ============================================ */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-heading);
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-green);
+}
+
+.theme-toggle__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.theme-toggle__icon--moon {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle__icon--sun {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle__icon--moon {
+  display: block;
+}
+
+/* ============================================
+   6. HERO
+   ============================================ */
+.hero {
+  padding: 120px 0 80px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, var(--color-green-soft), transparent 60%),
+    var(--color-bg);
+}
+
+.hero__inner {
+  max-width: 760px;
+}
+
+.hero__subtitle {
+  margin: 24px auto 0;
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+.hero__actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   7. RISK DISCLAIMER STRIP
+   ============================================ */
+.risk-strip {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 18px 0;
+}
+
+.risk-strip p {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+/* ============================================
+   8. COURSES GRID
+   ============================================ */
+.courses {
+  padding: var(--section-padding);
+}
+
+.courses__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.course-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.course-card:hover {
+  border-color: var(--color-green);
+  transform: translateY(-4px);
+}
+
+.course-card__badge {
+  align-self: flex-start;
+  background: var(--color-green-soft);
+  color: var(--color-green);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.course-card p {
+  flex-grow: 1;
+}
+
+.course-card .btn {
+  align-self: flex-start;
+}
+
+/* ============================================
+   9. ТАБЛИЦА СРАВНЕНИЯ КУРСОВ
+   ============================================ */
+.comparison {
+  padding: var(--section-padding);
+  background: var(--color-surface);
+}
+
+.comparison__table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.comparison__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+
+.comparison__table th,
+.comparison__table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.comparison__table th {
+  color: var(--color-green);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--color-bg);
+}
+
+.comparison__table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.comparison__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================
+   9.5 PDF-ГАЙДЫ — недорогие цифровые товары,
+   карточки компактнее, чем у полноценных курсов
+   ============================================ */
+.guides {
+  padding: var(--section-padding);
+  background: var(--color-surface);
+}
+
+.guides__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.guide-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.guide-card:hover {
+  border-color: var(--color-green);
+  transform: translateY(-4px);
+}
+
+.guide-card__icon {
+  width: 36px;
+  height: 36px;
+  color: var(--color-green);
+}
+
+.guide-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.guide-card p {
+  flex-grow: 1;
+  font-size: 0.9rem;
+}
+
+.guide-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.guide-card__price {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+.guides__note {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   10. ABOUT
+   ============================================ */
+.about {
+  padding: var(--section-padding);
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.about__photo {
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.about .section-title {
+  text-align: left;
+}
+
+/* ============================================
+   11. ОТЗЫВЫ
+   ============================================ */
+.reviews {
+  padding: var(--section-padding);
+  background: var(--color-surface);
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.review-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.review-card__text {
+  margin-bottom: 16px;
+}
+
+.review-card__text::before {
+  content: "\201C";
+  color: var(--color-green);
+  font-size: 1.5rem;
+  margin-right: 4px;
+}
+
+.review-card__author {
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   12. АККОРДЕОН — переиспользуемый компонент
+   (используется и в FAQ, и в программе курса:
+   разметка/JS общие, отличаются только модификаторы)
+   ============================================ */
+.faq {
+  padding: var(--section-padding);
+}
+
+.accordion-group {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.accordion-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.accordion-item__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.accordion-item__icon {
+  color: var(--color-green);
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.accordion-item__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+  padding: 0 24px;
+}
+
+.accordion-item__answer p,
+.accordion-item__answer ul {
+  padding-bottom: 20px;
+}
+
+.accordion-item__answer li {
+  color: var(--color-muted);
+  margin-bottom: 6px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.accordion-item__answer li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-green);
+}
+
+.accordion-item.is-open .accordion-item__answer {
+  max-height: 200px;
+}
+
+/* модификатор для длинных ответов (например, модули курса) */
+.accordion-item--lg.is-open .accordion-item__answer {
+  max-height: 600px;
+}
+
+.accordion-item.is-open .accordion-item__icon {
+  transform: rotate(45deg);
+}
+
+/* ============================================
+   13. ФУТЕР
+   ============================================ */
+.site-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: 64px 0 0;
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 48px;
+}
+
+.footer__col h4 {
+  color: var(--color-text);
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+
+.footer__col p {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.footer__col a:hover {
+  color: var(--color-green);
+}
+
+.logo--footer {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--color-border);
+  padding: 20px 24px;
+  /* + отступ под полосу жеста (home indicator) на iPhone без кнопки Home */
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.footer__bottom p {
+  font-size: 0.8rem;
+}
+
+/* ============================================
+   15. БЕЙДЖ — маленькая цветная подпись-плашка
+   ============================================ */
+.badge {
+  display: inline-block;
+  background: var(--color-green-soft);
+  color: var(--color-green);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+/* ============================================
+   16. HERO СТРАНИЦЫ КУРСА
+   ============================================ */
+.course-hero {
+  padding: 100px 0 64px;
+  background:
+    radial-gradient(circle at 50% 0%, var(--color-green-soft), transparent 60%),
+    var(--color-bg);
+}
+
+.course-hero__inner {
+  max-width: 780px;
+}
+
+.course-hero__back {
+  display: inline-block;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.course-hero__back:hover {
+  color: var(--color-green);
+}
+
+.course-hero__subtitle {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  max-width: 640px;
+}
+
+.course-hero__actions {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.course-hero__meta {
+  margin-top: 48px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.course-hero__meta li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.course-hero__meta strong {
+  color: var(--color-heading);
+  font-size: 1.1rem;
+}
+
+.course-hero__meta span {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   17. PROBLEMS — карточки болей аудитории
+   ============================================ */
+.problems {
+  padding: var(--section-padding);
+  background: var(--color-surface);
+}
+
+.problems__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.problem-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.problem-card__num {
+  display: block;
+  color: var(--color-green);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.problem-card h3 {
+  margin-bottom: 10px;
+}
+
+/* ============================================
+   18. STORY — история курса (переиспользует
+   раскладку "фото + текст", как в блоке "О Максиме")
+   ============================================ */
+.story {
+  padding: var(--section-padding);
+}
+
+.story__inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.story__photo {
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.story .section-title {
+  text-align: left;
+}
+
+.story__text p {
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   19. STATS — честные цифры по доходности
+   ============================================ */
+.stats {
+  padding: var(--section-padding);
+  background: var(--color-surface);
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.stat-card__value {
+  display: block;
+  color: var(--color-green);
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.stats__disclaimer {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   20. CURRICULUM — использует .accordion-group,
+   тут только отступы секции
+   ============================================ */
+.curriculum {
+  padding: var(--section-padding);
+}
+
+/* ============================================
+   21. PRICING — тарифы без корзины
+   ============================================ */
+.pricing {
+  padding: var(--section-padding);
+  background: var(--color-surface);
+}
+
+.pricing__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.pricing-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 32px 28px;
+  position: relative;
+}
+
+.pricing-card--featured {
+  border-color: var(--color-green);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -12px;
+  left: 28px;
+  background: var(--color-green);
+  color: #06210f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.pricing-card__price {
+  color: var(--color-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 8px 0 20px;
+}
+
+.pricing-card__features {
+  margin-bottom: 28px;
+}
+
+.pricing-card__features li {
+  color: var(--color-muted);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+
+.pricing-card__features li:last-child {
+  border-bottom: none;
+}
+
+.pricing-card .btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* ============================================
+   22. FINAL CTA — финальный призыв к действию
+   ============================================ */
+.final-cta {
+  padding: var(--section-padding);
+  text-align: center;
+}
+
+.final-cta__inner {
+  max-width: 560px;
+}
+
+.final-cta p {
+  margin: 16px 0 32px;
+}
+
+/* ============================================
+   14. АДАПТИВНОСТЬ (мобильные экраны)
+   ============================================ */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  .header__inner > .btn {
+    display: none;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .nav.nav--open {
+    max-height: 320px;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 24px 20px;
+  }
+
+  .nav__list li {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav__list li:last-child {
+    border-bottom: none;
+  }
+
+  .nav__list a {
+    display: block;
+    padding: 14px 0;
+  }
+
+  .about__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .about__photo {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .about .section-title,
+  .about p {
+    text-align: center;
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero {
+    padding: 88px 0 56px;
+  }
+
+  .courses,
+  .comparison,
+  .about,
+  .reviews,
+  .faq {
+    padding: 64px 0;
+  }
+
+  /* --- страница курса --- */
+  .course-hero {
+    padding: 76px 0 48px;
+  }
+
+  .course-hero__meta {
+    gap: 24px;
+  }
+
+  .story__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .story__photo {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .story .section-title,
+  .story__text p {
+    text-align: center;
+  }
+
+  .problems,
+  .story,
+  .stats,
+  .curriculum,
+  .pricing,
+  .final-cta {
+    padding: 64px 0;
+  }
+
+  .pricing-card--featured {
+    order: -1;
+  }
+}

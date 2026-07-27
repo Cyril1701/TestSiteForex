@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MAXIMUM TRADING — Системный трейдинг</title>
+  <script>
+    // Применяем тему ДО отрисовки страницы, чтобы не было
+    // мигания тёмной темой на долю секунды при загрузке светлой.
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <a href="#" class="logo">MAXIMUM<span>TRADING</span></a>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="#courses">Курсы</a></li>
+          <li><a href="#guides">PDF-гайды</a></li>
+          <li><a href="#about">О Максиме</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <a href="#" class="btn btn--primary btn--small">Написать в Telegram</a>
+
+      <button class="burger" id="burgerBtn" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <h1>Выбери свой путь трейдера</h1>
+        <p class="hero__subtitle">
+          [Плейсхолдер] Пять программ обучения — от первой системной прибыли
+          до профессиональной торговли на проп-счетах. Найди курс под свой
+          уровень и количество свободного времени.
+        </p>
+        <div class="hero__actions">
+          <a href="#courses" class="btn btn--primary">Выбрать курс</a>
+          <a href="#about" class="btn btn--outline">Узнать о преподавателе</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISK DISCLAIMER STRIP -->
+    <section class="risk-strip">
+      <div class="container">
+        <p>
+          ⚠ Торговля на Forex и криптовалютном рынке связана с высоким риском
+          потери капитала. [Плейсхолдер] Здесь будет честное и подробное
+          пояснение рисков — это повышает доверие и юридически защищает сайт.
+        </p>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section id="courses" class="courses">
+      <div class="container">
+        <h2 class="section-title">Курсы</h2>
+        <p class="section-subtitle">[Плейсхолдер] Краткое пояснение, как устроена линейка курсов.</p>
+
+        <div class="courses__grid">
+
+          <article class="course-card">
+            <div class="course-card__badge">Для новичков</div>
+            <h3>Traders Syndicate</h3>
+            <p>[Плейсхолдер] Закрытое комьюнити с обучением и ежедневной онлайн-торговлей.</p>
+            <a href="traders-syndicate.html" class="btn btn--outline btn--small">Подробнее</a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card__badge">Профессиональный уровень</div>
+            <h3>Maximum Element</h3>
+            <p>[Плейсхолдер] 6-месячный курс профессионального трейдинга до результата 2000–10000$ в месяц.</p>
+            <a href="max-element.html" class="btn btn--outline btn--small">Подробнее</a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card__badge">Мало времени</div>
+            <h3>Трейдинг для занятых</h3>
+            <p>[Плейсхолдер] Среднесрочная торговля для тех, кто занят на основной работе.</p>
+            <a href="formula30.html" class="btn btn--outline btn--small">Подробнее</a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card__badge">Системный подход</div>
+            <h3>MiniGUN</h3>
+            <p>[Плейсхолдер] Торговля по следам крупного игрока, результат до +2000$ в месяц.</p>
+            <a href="minigun.html" class="btn btn--outline btn--small">Подробнее</a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card__badge">Крипта</div>
+            <h3>Crypto365</h3>
+            <p>[Плейсхолдер] Спот и фьючерсы, сильные движения рынка от начала до конца.</p>
+            <a href="crypto365.html" class="btn btn--outline btn--small">Подробнее</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="comparison">
+      <div class="container">
+        <h2 class="section-title">Какой курс выбрать?</h2>
+        <div class="comparison__table-wrap">
+          <table class="comparison__table">
+            <thead>
+              <tr>
+                <th>Курс</th>
+                <th>Уровень</th>
+                <th>Время в день</th>
+                <th>Рынок</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Traders Syndicate</td>
+                <td>Новичок</td>
+                <td>[—]</td>
+                <td>Forex</td>
+              </tr>
+              <tr>
+                <td>Maximum Element</td>
+                <td>Продвинутый</td>
+                <td>[—]</td>
+                <td>Forex</td>
+              </tr>
+              <tr>
+                <td>Трейдинг для занятых</td>
+                <td>Любой</td>
+                <td>30 минут</td>
+                <td>Forex</td>
+              </tr>
+              <tr>
+                <td>MiniGUN</td>
+                <td>Средний</td>
+                <td>[—]</td>
+                <td>Forex</td>
+              </tr>
+              <tr>
+                <td>Crypto365</td>
+                <td>Любой</td>
+                <td>[—]</td>
+                <td>Крипта</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PDF GUIDES -->
+    <section id="guides" class="guides">
+      <div class="container">
+        <h2 class="section-title">PDF-мануалы</h2>
+        <p class="section-subtitle">[Плейсхолдер] Короткие практические гайды для тех, кто хочет разобраться в одной конкретной теме — без прохождения целого курса.</p>
+
+        <div class="guides__grid">
+
+          <article class="guide-card">
+            <div class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+              </svg>
+            </div>
+            <h3>Чек-лист трейдера на каждый день</h3>
+            <p>[Плейсхолдер] Короткое описание, что внутри и какую проблему решает гайд.</p>
+            <div class="guide-card__footer">
+              <span class="guide-card__price">[Цена]</span>
+              <a href="#" class="btn btn--outline btn--small">Купить</a>
+            </div>
+          </article>
+
+          <article class="guide-card">
+            <div class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+              </svg>
+            </div>
+            <h3>Гайд по риск-менеджменту</h3>
+            <p>[Плейсхолдер] Короткое описание, что внутри и какую проблему решает гайд.</p>
+            <div class="guide-card__footer">
+              <span class="guide-card__price">[Цена]</span>
+              <a href="#" class="btn btn--outline btn--small">Купить</a>
+            </div>
+          </article>
+
+          <article class="guide-card">
+            <div class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+              </svg>
+            </div>
+            <h3>Шаблон дневника трейдера</h3>
+            <p>[Плейсхолдер] Короткое описание, что внутри и какую проблему решает гайд.</p>
+            <div class="guide-card__footer">
+              <span class="guide-card__price">[Цена]</span>
+              <a href="#" class="btn btn--outline btn--small">Купить</a>
+            </div>
+          </article>
+
+          <article class="guide-card">
+            <div class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+              </svg>
+            </div>
+            <h3>Как читать объёмы рынка</h3>
+            <p>[Плейсхолдер] Короткое описание, что внутри и какую проблему решает гайд.</p>
+            <div class="guide-card__footer">
+              <span class="guide-card__price">[Цена]</span>
+              <a href="#" class="btn btn--outline btn--small">Купить</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="guides__note">
+          [Плейсхолдер] После оплаты PDF отправляется в Telegram. Цифровые товары
+          возврату не подлежат после отправки файла — уточните точную формулировку
+          у юриста перед публикацией.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="container about__inner">
+        <div class="about__photo" aria-hidden="true"></div>
+        <div class="about__text">
+          <h2 class="section-title">О Максиме Ковалевском</h2>
+          <p>[Плейсхолдер] Здесь будет реальная история: стаж, регалии, философия обучения, честный рассказ о собственном пути в трейдинге.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="reviews">
+      <div class="container">
+        <h2 class="section-title">Отзывы учеников</h2>
+        <div class="reviews__grid">
+          <div class="review-card">
+            <p class="review-card__text">[Плейсхолдер отзыва №1]</p>
+            <p class="review-card__author">Имя ученика</p>
+          </div>
+          <div class="review-card">
+            <p class="review-card__text">[Плейсхолдер отзыва №2]</p>
+            <p class="review-card__author">Имя ученика</p>
+          </div>
+          <div class="review-card">
+            <p class="review-card__text">[Плейсхолдер отзыва №3]</p>
+            <p class="review-card__author">Имя ученика</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <h2 class="section-title">Частые вопросы</h2>
+        <div class="accordion-group">
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Сколько нужно депозита для старта?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Плейсхолдер ответа]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Есть ли гарантия возврата денег?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Плейсхолдер ответа]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Сколько времени в день нужно уделять торговле?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Плейсхолдер ответа]</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contacts" class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <a href="#" class="logo logo--footer">MAXIMUM<span>TRADING</span></a>
+        <p>[Плейсхолдер] Информационный сайт проекта. Не является индивидуальной инвестиционной рекомендацией.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Контакты</h4>
+        <p>Telegram: <a href="#">[плейсхолдер]</a></p>
+        <p>Email: <a href="#">[плейсхолдер]</a></p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Документы</h4>
+        <p><a href="#">Политика конфиденциальности</a></p>
+        <p><a href="#">Политика возврата</a></p>
+        <p><a href="#">Отказ от ответственности</a></p>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© 2026 MAXIMUM TRADING. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
