@@ -269,17 +269,22 @@ p {
 
 .nav__list {
   display: flex;
-  gap: 28px;
+  align-items: center;
+  gap: 4px;
 }
 
 .nav__list a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
   font-size: 0.9rem;
   color: var(--color-muted);
-  transition: color 0.4s var(--ease-ios);
+  transition: color 0.4s var(--ease-ios), background-color 0.4s var(--ease-ios);
 }
 
 .nav__list a:hover {
   color: var(--color-green);
+  background: var(--color-green-hover);
 }
 
 .header__inner > .btn {
@@ -1352,6 +1357,7 @@ p {
 
   .nav__list {
     flex-direction: column;
+    align-items: stretch; /* иначе унаследованный align-items:center сожмёт пункты по ширине */
     gap: 0;
     padding: 8px 24px 20px;
   }
@@ -1395,6 +1401,7 @@ p {
   .nav__list a {
     display: block;
     padding: 14px 0;
+    border-radius: 0; /* на весь экран — пилюля со скруглением смотрелась бы странно рядом с разделителями */
   }
 
   .about__inner {
