@@ -238,7 +238,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 18px;
   padding-top: 18px;
   padding-bottom: 18px;
 }
@@ -275,9 +275,11 @@ p {
 
 .nav__list a {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 8px 12px;
   border-radius: 999px;
   font-size: 0.9rem;
+  white-space: nowrap; /* иначе "О Максиме"/"PDF-гайды" переносятся на 2 строки,
+    а у остальных пунктов — нет, из-за чего высота заливки при наведении скачет */
   color: var(--color-muted);
   transition: color 0.4s var(--ease-ios), background-color 0.4s var(--ease-ios);
 }
@@ -1293,9 +1295,14 @@ p {
 }
 
 /* ============================================
-   14. АДАПТИВНОСТЬ (мобильные экраны)
+   14. АДАПТИВНОСТЬ (мобильные и планшетные экраны)
+   Порог поднят с 768px до 1100px: полная строка навигации
+   (лого + 6 пунктов + иконки + кнопка Telegram) физически не
+   помещается в шапку уже на ширине контейнера ~1000px, поэтому
+   бургер-меню включается раньше, чем на классических "мобильных"
+   макетах — иначе пункты меню начинают переноситься на 2 строки.
    ============================================ */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .burger {
     display: flex;
   }
