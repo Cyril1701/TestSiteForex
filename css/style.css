@@ -275,11 +275,11 @@ p {
 .nav__list a {
   font-size: 0.9rem;
   color: var(--color-muted);
-  transition: color 0.2s ease;
+  transition: color 0.4s var(--ease-ios);
 }
 
 .nav__list a:hover {
-  color: var(--color-heading);
+  color: var(--color-green);
 }
 
 .header__inner > .btn {
