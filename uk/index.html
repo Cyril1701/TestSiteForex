@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MAXIMUM TRADING — Системний трейдинг</title>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <a href="#" class="logo">MAXIMUM<span>TRADING</span></a>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="#courses">Курси</a></li>
+          <li><a href="#guides">PDF-гайди</a></li>
+          <li><a href="#about">Про Максима</a></li>
+          <li><a href="#reviews">Відгуки</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contacts">Контакти</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Перемкнути тему">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <button class="lang-switch is-uk" id="langSwitch" data-target="../index.html" aria-label="Перемкнути мову на російську">
+        <span class="lang-switch__option lang-switch__option--ru">RU</span>
+        <span class="lang-switch__option lang-switch__option--uk">UA</span>
+        <span class="lang-switch__thumb"></span>
+      </button>
+
+      <a href="#" class="btn btn--primary btn--small">Написати в Telegram</a>
+
+      <button class="burger" id="burgerBtn" aria-label="Відкрити меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <h1>Обери свій шлях трейдера</h1>
+        <p class="hero__subtitle">
+          [Заповнювач] П'ять програм навчання — від першого системного прибутку
+          до професійної торгівлі на проп-рахунках. Знайди курс під свій
+          рівень і кількість вільного часу.
+        </p>
+        <div class="hero__actions">
+          <a href="#courses" class="btn btn--primary">Обрати курс</a>
+          <a href="#about" class="btn btn--outline">Дізнатися про викладача</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISK DISCLAIMER STRIP -->
+    <section class="risk-strip">
+      <div class="container">
+        <p>
+          ⚠ Торгівля на Forex і криптовалютному ринку пов'язана з високим
+          ризиком втрати капіталу. [Заповнювач] Тут буде чесне і докладне
+          пояснення ризиків — це підвищує довіру і юридично захищає сайт.
+        </p>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section id="courses" class="courses">
+      <div class="container">
+        <h2 class="section-title">Курси</h2>
+        <p class="section-subtitle">[Заповнювач] Короткий опис, як влаштована лінійка курсів.</p>
+
+        <div class="courses__grid">
+
+          <article class="course-card">
+            <div class="course-card__badge">Для новачків</div>
+            <h3>Traders Syndicate</h3>
+            <p>[Заповнювач] Закрита ком'юніті з навчанням і щоденною онлайн-торгівлею.</p>
+            <a href="traders-syndicate.html" class="btn btn--outline btn--small">Детальніше</a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card__badge">Професійний рівень</div>
+            <h3>Maximum Element</h3>
+            <p>[Заповнювач] 6-місячний курс професійного трейдингу до результату 2000–10000$ на місяць.</p>
+            <a href="max-element.html" class="btn btn--outline btn--small">Детальніше</a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card__badge">Мало часу</div>
+            <h3>Трейдинг для зайнятих</h3>
+            <p>[Заповнювач] Середньострокова торгівля для тих, хто зайнятий на основній роботі.</p>
+            <a href="formula30.html" class="btn btn--outline btn--small">Детальніше</a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card__badge">Системний підхід</div>
+            <h3>MiniGUN</h3>
+            <p>[Заповнювач] Торгівля слідом за великим гравцем, результат до +2000$ на місяць.</p>
+            <a href="minigun.html" class="btn btn--outline btn--small">Детальніше</a>
+          </article>
+
+          <article class="course-card">
+            <div class="course-card__badge">Крипта</div>
+            <h3>Crypto365</h3>
+            <p>[Заповнювач] Спот і ф'ючерси, сильні рухи ринку від початку до кінця.</p>
+            <a href="crypto365.html" class="btn btn--outline btn--small">Детальніше</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="comparison">
+      <div class="container">
+        <h2 class="section-title">Який курс обрати?</h2>
+        <div class="comparison__table-wrap">
+          <table class="comparison__table">
+            <thead>
+              <tr>
+                <th>Курс</th>
+                <th>Рівень</th>
+                <th>Час на день</th>
+                <th>Ринок</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Traders Syndicate</td>
+                <td>Новачок</td>
+                <td>[—]</td>
+                <td>Forex</td>
+              </tr>
+              <tr>
+                <td>Maximum Element</td>
+                <td>Просунутий</td>
+                <td>[—]</td>
+                <td>Forex</td>
+              </tr>
+              <tr>
+                <td>Трейдинг для зайнятих</td>
+                <td>Будь-який</td>
+                <td>30 хвилин</td>
+                <td>Forex</td>
+              </tr>
+              <tr>
+                <td>MiniGUN</td>
+                <td>Середній</td>
+                <td>[—]</td>
+                <td>Forex</td>
+              </tr>
+              <tr>
+                <td>Crypto365</td>
+                <td>Будь-який</td>
+                <td>[—]</td>
+                <td>Крипта</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PDF GUIDES -->
+    <section id="guides" class="guides">
+      <div class="container">
+        <h2 class="section-title">PDF-мануали</h2>
+        <p class="section-subtitle">[Заповнювач] Короткі практичні гайди для тих, хто хоче розібратися в одній конкретній темі — без проходження цілого курсу.</p>
+
+        <div class="guides__grid">
+
+          <article class="guide-card">
+            <div class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+              </svg>
+            </div>
+            <h3>Чек-лист трейдера на кожен день</h3>
+            <p>[Заповнювач] Короткий опис, що всередині і яку проблему вирішує гайд.</p>
+            <div class="guide-card__footer">
+              <span class="guide-card__price">[Ціна]</span>
+              <a href="#" class="btn btn--outline btn--small">Купити</a>
+            </div>
+          </article>
+
+          <article class="guide-card">
+            <div class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+              </svg>
+            </div>
+            <h3>Гайд з ризик-менеджменту</h3>
+            <p>[Заповнювач] Короткий опис, що всередині і яку проблему вирішує гайд.</p>
+            <div class="guide-card__footer">
+              <span class="guide-card__price">[Ціна]</span>
+              <a href="#" class="btn btn--outline btn--small">Купити</a>
+            </div>
+          </article>
+
+          <article class="guide-card">
+            <div class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+              </svg>
+            </div>
+            <h3>Шаблон щоденника трейдера</h3>
+            <p>[Заповнювач] Короткий опис, що всередині і яку проблему вирішує гайд.</p>
+            <div class="guide-card__footer">
+              <span class="guide-card__price">[Ціна]</span>
+              <a href="#" class="btn btn--outline btn--small">Купити</a>
+            </div>
+          </article>
+
+          <article class="guide-card">
+            <div class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+              </svg>
+            </div>
+            <h3>Як читати обсяги ринку</h3>
+            <p>[Заповнювач] Короткий опис, що всередині і яку проблему вирішує гайд.</p>
+            <div class="guide-card__footer">
+              <span class="guide-card__price">[Ціна]</span>
+              <a href="#" class="btn btn--outline btn--small">Купити</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="guides__note">
+          [Заповнювач] Після оплати PDF надсилається в Telegram. Цифрові товари
+          поверненню не підлягають після відправлення файлу — уточніть точне
+          формулювання у юриста перед публікацією.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="container about__inner">
+        <div class="about__photo" aria-hidden="true"></div>
+        <div class="about__text">
+          <h2 class="section-title">Про Максима Ковалевського</h2>
+          <p>[Заповнювач] Тут буде реальна історія: стаж, регалії, філософія навчання, чесна розповідь про власний шлях у трейдингу.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="reviews">
+      <div class="container">
+        <h2 class="section-title">Відгуки учнів</h2>
+        <div class="reviews__grid">
+          <div class="review-card">
+            <p class="review-card__text">[Заповнювач відгуку №1]</p>
+            <p class="review-card__author">Ім'я учня</p>
+          </div>
+          <div class="review-card">
+            <p class="review-card__text">[Заповнювач відгуку №2]</p>
+            <p class="review-card__author">Ім'я учня</p>
+          </div>
+          <div class="review-card">
+            <p class="review-card__text">[Заповнювач відгуку №3]</p>
+            <p class="review-card__author">Ім'я учня</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <h2 class="section-title">Часті питання</h2>
+        <div class="accordion-group">
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Скільки потрібно депозиту для старту?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Заповнювач відповіді]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Чи є гарантія повернення грошей?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Заповнювач відповіді]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Скільки часу на день потрібно приділяти торгівлі?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Заповнювач відповіді]</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contacts" class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <a href="#" class="logo logo--footer">MAXIMUM<span>TRADING</span></a>
+        <p>[Заповнювач] Інформаційний сайт проєкту. Не є індивідуальною інвестиційною рекомендацією.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Контакти</h4>
+        <p>Telegram: <a href="#">[заповнювач]</a></p>
+        <p>Email: <a href="#">[заповнювач]</a></p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Документи</h4>
+        <p><a href="#">Політика конфіденційності</a></p>
+        <p><a href="#">Політика повернення</a></p>
+        <p><a href="#">Відмова від відповідальності</a></p>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© 2026 MAXIMUM TRADING. Усі права захищені.</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

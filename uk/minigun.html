@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MiniGUN — торгівля слідом за великим гравцем | MAXIMUM TRADING</title>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">MAXIMUM<span>TRADING</span></a>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="index.html#courses">Курси</a></li>
+          <li><a href="index.html#guides">PDF-гайди</a></li>
+          <li><a href="index.html#about">Про Максима</a></li>
+          <li><a href="index.html#reviews">Відгуки</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#contacts">Контакти</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Перемкнути тему">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <button class="lang-switch is-uk" id="langSwitch" data-target="../minigun.html" aria-label="Перемкнути мову на російську">
+        <span class="lang-switch__option lang-switch__option--ru">RU</span>
+        <span class="lang-switch__option lang-switch__option--uk">UA</span>
+        <span class="lang-switch__thumb"></span>
+      </button>
+
+      <a href="#" class="btn btn--primary btn--small">Написати в Telegram</a>
+
+      <button class="burger" id="burgerBtn" aria-label="Відкрити меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- COURSE HERO -->
+    <section class="course-hero">
+      <div class="container course-hero__inner">
+        <a href="index.html" class="course-hero__back">← Всі курси</a>
+        <span class="badge">Середній рівень · Smart Money</span>
+        <h1>Торгуй слідом за великим гравцем, а не проти нього</h1>
+        <p class="course-hero__subtitle">
+          [Заповнювач] Курс з торгової системи MiniGUN — вчимося знаходити на графіку
+          сліди дій великого капіталу і заходити в угоди в його напрямку, замість
+          того щоб гадати за інтуїцією.
+        </p>
+        <div class="course-hero__actions">
+          <a href="#pricing" class="btn btn--primary">Тарифи і запис</a>
+          <a href="#curriculum" class="btn btn--outline">Дивитися програму</a>
+        </div>
+        <ul class="course-hero__meta">
+          <li><strong>~10–15 хв</strong><span>на аналіз однієї пари</span></li>
+          <li><strong>Онлайн</strong><span>з розбором угод</span></li>
+          <li><strong>Forex</strong><span>ринок</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RISK DISCLAIMER -->
+    <section class="risk-strip">
+      <div class="container">
+        <p>
+          ⚠ [Заповнювач] Сліди великого гравця на графіку — це статистична
+          ймовірність, а не гарантія напрямку ціни. Торгівля на Forex завжди
+          пов'язана з ризиком втрати капіталу.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROBLEMS -->
+    <section class="problems">
+      <div class="container">
+        <h2 class="section-title">Що заважає торгувати в напрямку великого капіталу</h2>
+        <p class="section-subtitle">[Заповнювач] Короткий опис, чому без системи легко зайти проти ринку.</p>
+
+        <div class="problems__grid">
+          <article class="problem-card">
+            <span class="problem-card__num">01</span>
+            <h3>Не видно напрямок</h3>
+            <p>[Заповнювач] На графіку не читаються сліди дій великих учасників ринку.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__num">02</span>
+            <h3>Угоди проти тренду</h3>
+            <p>[Заповнювач] Угоди відкриваються інтуїтивно і часто йдуть проти великого капіталу.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__num">03</span>
+            <h3>Щоденник трейдера</h3>
+            <p>[Заповнювач] Без розбору минулих угод складно зрозуміти, де логіка зламалася.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__num">04</span>
+            <h3>Ризик-менеджмент</h3>
+            <p>[Заповнювач] Точка входу є, а розрахунку ризику на угоду — немає.</p>
+          </article>
+          <article class="problem-card">
+            <span class="problem-card__num">05</span>
+            <h3>Психологія торгівлі</h3>
+            <p>[Заповнювач] Страшно входити за системою, якщо угода йде не одразу в плюс.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story">
+      <div class="container story__inner">
+        <div class="story__photo" aria-hidden="true"></div>
+        <div class="story__text">
+          <h2 class="section-title">Як з'явилася система MiniGUN</h2>
+          <p>[Заповнювач] Історія про те, як пошук закономірностей у поведінці великих
+          учасників ринку склався в конкретний алгоритм аналізу графіка.</p>
+          <p>[Заповнювач] Другий абзац — про те, що дає торгівля в напрямку великого
+          гравця і чому це знижує кількість випадкових угод.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REALISTIC EXPECTATIONS -->
+    <section class="stats">
+      <div class="container">
+        <h2 class="section-title">Реалістичні очікування щодо дохідності</h2>
+        <p class="section-subtitle">[Заповнювач] Ми навмисно не обіцяємо мільйони за місяць — ось чесні цифри за нашою статистикою.</p>
+
+        <div class="stats__grid">
+          <div class="stat-card">
+            <span class="stat-card__value">2:1–5:1</span>
+            <p>типове співвідношення прибуток/ризик на угоду</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__value">10–20%</span>
+            <p>середня дохідність прибуткових учнів на місяць</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__value">0%</span>
+            <p>гарантії — ринок є ринок, і це нормально</p>
+          </div>
+        </div>
+
+        <p class="stats__disclaimer">
+          [Заповнювач] Повний текст дисклеймера про ризики торгівлі і про те, що
+          минулі результати учнів не гарантують майбутніх, розмістимо тут.
+        </p>
+      </div>
+    </section>
+
+    <!-- CURRICULUM -->
+    <section id="curriculum" class="curriculum">
+      <div class="container">
+        <h2 class="section-title">Програма курсу</h2>
+        <p class="section-subtitle">4 модулі від читання графіка до готової торгової системи.</p>
+
+        <div class="accordion-group">
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 1 — Сліди великого гравця на графіку
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Заповнювач] Як відрізнити рух великого капіталу від ринкового шуму</li>
+                <li>[Заповнювач] Визначення напрямку ринку за 10–15 хвилин</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 2 — Точки входу за системою MiniGUN
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Заповнювач] Алгоритмізовані сетапи входу в угоду</li>
+                <li>[Заповнювач] Розбір реальних угод зі статистики системи</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 3 — Ризик-менеджмент
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Заповнювач] Розрахунок ризику і співвідношення прибуток/ризик від 2:1 до 5:1</li>
+                <li>[Заповнювач] Правила виходу з угоди і фіксації прибутку</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item accordion-item--lg">
+            <button class="accordion-item__question">
+              Модуль 4 — Дисципліна виконання
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <ul>
+                <li>[Заповнювач] Звід правил на кожну торгову ситуацію</li>
+                <li>[Заповнювач] Ведення щоденника трейдера за системою MiniGUN</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <h2 class="section-title">Тарифи</h2>
+        <p class="section-subtitle">Жодного кошика і «доставки» — оберіть формат і напишіть у Telegram, ми допоможемо з оплатою і доступом.</p>
+
+        <div class="pricing__grid">
+          <article class="pricing-card">
+            <h3>Базовий</h3>
+            <p class="pricing-card__price">[Заповнювач ціни]</p>
+            <ul class="pricing-card__features">
+              <li>Доступ до записів усіх модулів</li>
+              <li>Матеріали і чек-листи по системі</li>
+              <li>Доступ до закритого чату</li>
+            </ul>
+            <a href="#" class="btn btn--outline">Записатися</a>
+          </article>
+
+          <article class="pricing-card pricing-card--featured">
+            <span class="pricing-card__badge">Популярний вибір</span>
+            <h3>Стандарт</h3>
+            <p class="pricing-card__price">[Заповнювач ціни]</p>
+            <ul class="pricing-card__features">
+              <li>Все з тарифу «Базовий»</li>
+              <li>Щотижневі розбори угод</li>
+              <li>Перевірка щоденника трейдера куратором</li>
+            </ul>
+            <a href="#" class="btn btn--primary">Записатися</a>
+          </article>
+
+          <article class="pricing-card">
+            <h3>VIP</h3>
+            <p class="pricing-card__price">[Заповнювач ціни]</p>
+            <ul class="pricing-card__features">
+              <li>Все з тарифу «Стандарт»</li>
+              <li>Особисті дзвінки з куратором</li>
+              <li>Розбір індивідуального торгового журналу</li>
+            </ul>
+            <a href="#" class="btn btn--outline">Записатися</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews">
+      <div class="container">
+        <h2 class="section-title">Відгуки учнів курсу</h2>
+        <div class="reviews__grid">
+          <div class="review-card">
+            <p class="review-card__text">[Заповнювач відгуку №1]</p>
+            <p class="review-card__author">Ім'я учня</p>
+          </div>
+          <div class="review-card">
+            <p class="review-card__text">[Заповнювач відгуку №2]</p>
+            <p class="review-card__author">Ім'я учня</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="container">
+        <h2 class="section-title">Часті питання про курс</h2>
+        <div class="accordion-group">
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Чим MiniGUN відрізняється від Maximum Element?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Заповнювач відповіді]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Чи потрібен досвід торгівлі для цього курсу?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Заповнювач відповіді]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              На яких парах і таймфреймах працює система?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Заповнювач відповіді]</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__question">
+              Чи є гарантія повернення грошей?
+              <span class="accordion-item__icon">+</span>
+            </button>
+            <div class="accordion-item__answer">
+              <p>[Заповнювач відповіді]</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <div class="container final-cta__inner">
+        <h2>Готові торгувати в напрямку великого гравця?</h2>
+        <p>[Заповнювач] Короткий заклик записатися, без штучних дедлайнів і таймерів.</p>
+        <a href="#pricing" class="btn btn--primary">Обрати тариф</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contacts" class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <a href="index.html" class="logo logo--footer">MAXIMUM<span>TRADING</span></a>
+        <p>[Заповнювач] Інформаційний сайт проєкту. Не є індивідуальною інвестиційною рекомендацією.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Контакти</h4>
+        <p>Telegram: <a href="#">[заповнювач]</a></p>
+        <p>Email: <a href="#">[заповнювач]</a></p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Документи</h4>
+        <p><a href="#">Політика конфіденційності</a></p>
+        <p><a href="#">Політика повернення</a></p>
+        <p><a href="#">Відмова від відповідальності</a></p>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© 2026 MAXIMUM TRADING. Усі права захищені.</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

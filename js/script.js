@@ -106,3 +106,25 @@ if (!prefersReducedMotion) {
     ripple.addEventListener('animationend', () => ripple.remove());
   });
 }
+
+// ==============================
+// Переключатель языка (RU/UA). Это не переключение состояния
+// внутри одной страницы, а переход на отдельный файл — поэтому
+// сначала проигрываем анимацию сдвига бегунка, и только потом,
+// с небольшой задержкой, переходим по ссылке из data-target.
+// ==============================
+const langSwitch = document.getElementById('langSwitch');
+
+if (langSwitch) {
+  langSwitch.addEventListener('click', () => {
+    const target = langSwitch.dataset.target;
+    if (!target) return;
+
+    langSwitch.classList.toggle('is-uk');
+    const delay = prefersReducedMotion ? 0 : 350;
+
+    setTimeout(() => {
+      window.location.href = target;
+    }, delay);
+  });
+}
