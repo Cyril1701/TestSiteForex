@@ -281,7 +281,21 @@ p {
   gap: 5px;
   width: 44px;
   height: 44px;
+  border-radius: 50%;
   flex-shrink: 0;
+  transition: background-color 0.2s var(--ease-standard);
+}
+
+/* та же круглая зелёная подсветка при наведении, что и у
+   переключателя темы рядом — единая логика hover по сайту */
+.burger:hover {
+  background: var(--color-green-soft);
+}
+
+.burger:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
 }
 
 /* Три палочки морфируют в крестик при открытии меню.
